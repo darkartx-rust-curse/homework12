@@ -1,0 +1,17 @@
+[package]
+name = "homework12"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+env_logger = { version = "0.11.8", optional = true }
+log = "0.4.27"
+thiserror = "2.0.12"
+
+[features]
+examples = ["env_logger"]
+env_logger = ["dep:env_logger"]
+
+[[example]]
+name = "robot_commands"
+required-features = ["examples"]

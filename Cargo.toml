@@ -15,3 +15,7 @@ env_logger = ["dep:env_logger"]
 [[example]]
 name = "robot_commands"
 required-features = ["examples"]
+
+[[example]]
+name = "robot_interpreter"
+required-features = ["examples"]

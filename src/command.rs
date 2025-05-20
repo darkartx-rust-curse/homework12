@@ -189,18 +189,12 @@ impl Command for UpPenCommand {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct CommandList {
     commands: Vec<Box<dyn Command>>,
 }
 
 impl CommandList {
-    pub fn new() -> Self {
-        Self {
-            commands: Vec::new(),
-        }
-    }
-
     pub fn add_command(&mut self, command: Box<dyn Command>) {
         self.commands.push(command);
     }
@@ -218,11 +212,16 @@ impl CommandList {
         }
         Ok(())
     }
+
+    pub fn commands(&self) -> &[Box<dyn Command>] {
+        &self.commands
+    }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::{*, super::robot::Direction};
+    use super::*;
+    use crate::robot::Direction;
 
     #[test]
     fn test_move_command_execute_and_rollback() {

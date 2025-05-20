@@ -1,4 +1,4 @@
-use homework12::{robot::Robot, command::*};
+use homework12::{command::*, robot::Robot};
 
 fn main() {
     init_logger();
@@ -27,7 +27,7 @@ fn init_logger() {
 }
 
 fn command_list() -> CommandList {
-    let mut command_list = CommandList::new();
+    let mut command_list = CommandList::default();
     command_list.add_command(Box::new(MoveCommand::new(1)));
     command_list.add_command(Box::new(TurnLeftCommand::new(3)));
     command_list.add_command(Box::new(MoveCommand::new(2)));

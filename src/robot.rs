@@ -50,33 +50,33 @@ impl Robot {
     pub fn move_forward(&mut self) -> Result<(), Error> {
         match self.direction {
             Direction::Up => {
-                if self.y >= i32::MAX {
+                if self.y == i32::MAX {
                     return Err(Error::OutOfBounds);
                 }
 
                 self.y += 1
-            },
+            }
             Direction::Right => {
-                if self.x >= i32::MAX {
+                if self.x == i32::MAX {
                     return Err(Error::OutOfBounds);
                 }
-                
+
                 self.x += 1
-            },
+            }
             Direction::Down => {
-                if self.y <= i32::MIN {
+                if self.y == i32::MIN {
                     return Err(Error::OutOfBounds);
                 }
 
                 self.y -= 1
-            },
+            }
             Direction::Left => {
-                if self.x <= i32::MIN {
+                if self.x == i32::MIN {
                     return Err(Error::OutOfBounds);
                 }
 
                 self.x -= 1
-            },
+            }
         }
 
         log::info!("Move to forward at ({}, {})", self.x, self.y);
@@ -294,4 +294,3 @@ mod tests {
         assert!(robot.drawing);
     }
 }
-
